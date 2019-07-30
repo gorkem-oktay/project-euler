@@ -6,21 +6,30 @@ import java.util.List;
 
 public class Helper {
 
-    public static List<BigInteger> getDividers(BigInteger value) {
-        List<BigInteger> dividers = new ArrayList<>();
-        BigInteger currentDivider = BigInteger.TWO;
-        BigInteger currentValue = value;
+    public static List<Long> getDividers(long value) {
+        List<Long> dividers = new ArrayList<>();
+        long currentDivider = 1;
+        long currentValue = value;
 
-        while(!currentValue.equals(BigInteger.ONE)) {
-            if(currentValue.mod(currentDivider).equals(BigInteger.ZERO)){
+        while (currentValue != 1) {
+            if (currentValue % currentDivider == 0) {
                 dividers.add(currentDivider);
-                currentValue = currentValue.divide(currentDivider);
+                currentValue = currentValue / currentDivider;
             } else {
-                currentDivider = currentDivider.add(BigInteger.ONE);
+                currentDivider++;
             }
         }
 
         return dividers;
+    }
+
+    public static long getTriangleNumber(int index) {
+        long result = 0;
+        for (long i = 1; i <= index; i++) {
+            result += i;
+        }
+
+        return result;
     }
 
     public static boolean isPrime(BigInteger value) {

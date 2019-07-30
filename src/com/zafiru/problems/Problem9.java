@@ -15,18 +15,24 @@ public class Problem9 extends Problem {
     @Override
     public String answer() {
 
-        double a = 3.0; double targetA = 3.0;
-        double b = 4.0; double targetB = 4.0;
-        double c = 5.0; double targetC = 5.0;
+        int c = 2;
+        int result = 0;
 
-        double factor = 1000.0 / 12.0;
+        while (result < 2000) {
+            for(int i = 1; i < c; i++) {
+                for (int j = 1; j <= i; j++) {
+                    if (c * c == (i * i) + (j * j)) {
+                        result = j + i + c;
+                        if(result == 1000)
+                        {
+                            return String.valueOf(i * j * c);
+                        }
+                    }
+                }
+            }
+            c++;
+        }
 
-        targetA = a * factor;
-        targetB = b * factor;
-        targetC = c * factor;
-
-        System.out.println("a: " + targetA + ", b: " + targetB + ", c: " + targetC);
-
-        return String.valueOf(targetA * targetB * targetC);
+        return String.valueOf("0");
     }
 }
