@@ -6,17 +6,29 @@ import java.util.List;
 
 public class Helper {
 
-    public static List<Long> getDividers(long value) {
-        List<Long> dividers = new ArrayList<>();
-        long currentDivider = 1;
-        long currentValue = value;
+    public static List<BigInteger> getProducts(BigInteger value) {
+        List<BigInteger> products = new ArrayList<>();
+        BigInteger currentDivider = BigInteger.TWO;
+        BigInteger currentValue = value;
 
-        while (currentValue != 1) {
-            if (currentValue % currentDivider == 0) {
-                dividers.add(currentDivider);
-                currentValue = currentValue / currentDivider;
+        while (!currentValue.equals(BigInteger.ONE)) {
+            if (currentValue.mod(currentDivider).equals(BigInteger.ZERO)) {
+                products.add(currentDivider);
+                currentValue = currentValue.divide(currentDivider);
             } else {
-                currentDivider++;
+                currentDivider = currentDivider.add(BigInteger.ONE);
+            }
+        }
+
+        return products;
+    }
+
+    public static List<BigInteger> getDividers(BigInteger value){
+        List<BigInteger> dividers = new ArrayList<>();
+
+        for (BigInteger i = BigInteger.ONE; i.compareTo(value) <= 0; i = i.add(BigInteger.ONE)) {
+            if(value.mod(i).equals(BigInteger.ZERO)){
+                dividers.add(i);
             }
         }
 

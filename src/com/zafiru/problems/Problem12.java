@@ -1,5 +1,9 @@
 package com.zafiru.problems;
 
+import com.zafiru.utils.Helper;
+
+import java.math.BigInteger;
+
 public class Problem12 extends Problem {
 
     public Problem12() {
@@ -24,8 +28,24 @@ public class Problem12 extends Problem {
     @Override
     public String answer() {
 
+        int expectedDividerCount = 500;
+        int currentDividerCount = 0;
 
+        BigInteger counter = new BigInteger("7");
+        BigInteger value = BigInteger.ZERO;
 
-        return null;
+        while (currentDividerCount <= expectedDividerCount) {
+
+            counter = counter.add(BigInteger.ONE);
+
+            value = BigInteger.ZERO;
+            for (BigInteger i = BigInteger.ONE; i.compareTo(counter) < 0; i = i.add(BigInteger.ONE)) {
+                value = value.add(i);
+            }
+
+            currentDividerCount = Helper.getDividers(new BigInteger("" + value)).size();
+        }
+
+        return String.valueOf(value);
     }
 }
