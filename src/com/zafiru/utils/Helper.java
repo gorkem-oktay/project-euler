@@ -35,6 +35,18 @@ public class Helper {
         return dividers;
     }
 
+    public static List<Long> getDividers(long value){
+        List<Long> dividers = new ArrayList<>();
+
+        for (long i = 1; i <= value; i++) {
+            if(value % i == 0){
+                dividers.add(i);
+            }
+        }
+
+        return dividers;
+    }
+
     public static long getTriangleNumber(int index) {
         long result = 0;
         for (long i = 1; i <= index; i++) {

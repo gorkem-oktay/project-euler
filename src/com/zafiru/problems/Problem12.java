@@ -31,19 +31,19 @@ public class Problem12 extends Problem {
         int expectedDividerCount = 500;
         int currentDividerCount = 0;
 
-        BigInteger counter = new BigInteger("7");
-        BigInteger value = BigInteger.ZERO;
+        long counter = 7;
+        long value = 0;
 
         while (currentDividerCount <= expectedDividerCount) {
 
-            counter = counter.add(BigInteger.ONE);
+            counter++;
 
-            value = BigInteger.ZERO;
-            for (BigInteger i = BigInteger.ONE; i.compareTo(counter) < 0; i = i.add(BigInteger.ONE)) {
-                value = value.add(i);
+            value = 0;
+            for (long i = 0; i < counter; i++) {
+                value += i;
             }
 
-            currentDividerCount = Helper.getDividers(new BigInteger("" + value)).size();
+            currentDividerCount = Helper.getDividers(value).size();
         }
 
         return String.valueOf(value);
