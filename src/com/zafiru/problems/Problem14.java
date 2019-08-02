@@ -20,7 +20,7 @@ public class Problem14 extends Problem {
                 "NOTE: Once the chain starts the terms are allowed to go above one million.");
     }
 
-    public int getChainSize(int value, int size){
+    int getChainSize(int value, int size){
         /*
         if (value == 1) {
             return size + 1;
