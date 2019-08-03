@@ -82,4 +82,13 @@ public class Helper {
             return value.multiply(factorial(value.subtract(BigInteger.ONE)));
         }
     }
+
+    public static BigInteger sumOfDigits(BigInteger value){
+        BigInteger result = BigInteger.ZERO;
+        String strValue = value.toString();
+        for (int i = 0; i < strValue.length(); i++) {
+            result = result.add(new BigInteger(String.valueOf(strValue.charAt(i))));
+        }
+        return result;
+    }
 }
