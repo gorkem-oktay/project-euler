@@ -1,5 +1,9 @@
 package com.zafiru.problems;
 
+import com.zafiru.utils.Helper;
+
+import java.math.BigInteger;
+
 public class Problem15 extends Problem {
 
     public Problem15() {
@@ -9,16 +13,8 @@ public class Problem15 extends Problem {
                 "How many such routes are there through a 20×20 grid?");
     }
 
-    int numberOfPaths(int m, int n) {
-        if (m == 1 || n == 1) {
-            return 1;
-        } else {
-            return numberOfPaths(m - 1, n) + numberOfPaths(m, n - 1);
-        }
-    }
-
     @Override
     public String answer() {
-        return String.valueOf(numberOfPaths(21,21));
+        return String.valueOf(Helper.combination(new BigInteger("40"), new BigInteger("20")));
     }
 }

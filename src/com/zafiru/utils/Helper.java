@@ -1,5 +1,7 @@
 package com.zafiru.utils;
 
+import com.zafiru.models.Node;
+
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,11 +25,11 @@ public class Helper {
         return products;
     }
 
-    public static List<BigInteger> getDividers(BigInteger value){
+    public static List<BigInteger> getDividers(BigInteger value) {
         List<BigInteger> dividers = new ArrayList<>();
 
         for (BigInteger i = BigInteger.ONE; i.compareTo(value) <= 0; i = i.add(BigInteger.ONE)) {
-            if(value.mod(i).equals(BigInteger.ZERO)){
+            if (value.mod(i).equals(BigInteger.ZERO)) {
                 dividers.add(i);
             }
         }
@@ -35,11 +37,11 @@ public class Helper {
         return dividers;
     }
 
-    public static List<Long> getDividers(long value){
+    public static List<Long> getDividers(long value) {
         List<Long> dividers = new ArrayList<>();
 
         for (long i = 1; i <= value; i++) {
-            if(value % i == 0){
+            if (value % i == 0) {
                 dividers.add(i);
             }
         }
@@ -67,5 +69,17 @@ public class Helper {
         }
 
         return true;
+    }
+
+    public static BigInteger combination(BigInteger x, BigInteger y) {
+        return factorial(x).divide(factorial(x.subtract(y)).multiply(factorial(y)));
+    }
+
+    public static BigInteger factorial(BigInteger value){
+        if(value.equals(BigInteger.ZERO)){
+            return BigInteger.ONE;
+        } else {
+            return value.multiply(factorial(value.subtract(BigInteger.ONE)));
+        }
     }
 }
