@@ -91,4 +91,49 @@ public class Helper {
         }
         return result;
     }
+
+    public static int getSigmaIndex(int value) {
+        int index = 0;
+        int sum = 0;
+        while(sum != (value * 2)){
+            index++;
+            sum = index * (index + 1);
+        }
+        return index;
+    }
+
+
+    public static Node convertArrayToTree(ArrayList<?> data){
+        ArrayList<Node> nodes = new ArrayList<>();
+
+        for (int i = 0; i < data.size(); i++) {
+            nodes.add(new Node(data.get(i)));
+        }
+
+        int rowCounter = 0;
+        int columnCounter = 0;
+        int additionCount = 0;
+        for (int i = 0; i < nodes.size(); i++) {
+            if(i + additionCount + 2 > nodes.size()){
+                break;
+            }
+
+            Node parentNode = nodes.get(i);
+            Node leftNode = nodes.get(i + additionCount + 1);
+            Node rightNode = nodes.get(i + additionCount + 2);
+
+            parentNode.left = leftNode;
+            parentNode.right = rightNode;
+
+            if (rowCounter == columnCounter) {
+                rowCounter++;
+                columnCounter = 0;
+                additionCount++;
+            } else {
+                columnCounter++;
+            }
+        }
+
+        return nodes.get(0);
+    }
 }
