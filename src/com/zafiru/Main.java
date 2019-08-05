@@ -21,6 +21,6 @@ public class Main {
             problems.put(i, problem.getDeclaredConstructor().newInstance());
         }
 
-        System.out.println(problems.get(18).answer());
+        System.out.println(problems.get(19).answer());
     }
 }
